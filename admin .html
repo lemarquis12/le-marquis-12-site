@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - le_marquis_12</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>Panneau d’administration</header>
+
+<div id="loginSection">
+  <h3>Connexion Admin</h3>
+  <input type="text" id="username" placeholder="Nom d'utilisateur">
+  <input type="password" id="password" placeholder="Mot de passe">
+  <button onclick="loginAdmin()">Se connecter</button>
+  <p id="loginMessage"></p>
+</div>
+
+<div id="adminPanel" style="display:none;">
+  <aside id="sidebar">
+    <button onclick="showSection('newsEdit')">📰 Actualités</button>
+    <button onclick="showSection('eventsEdit')">📅 Évènements</button>
+    <button onclick="logout()">🚪 Déconnexion</button>
+  </aside>
+
+  <main id="adminContent">
+    <section id="newsEdit" class="adminSection">
+      <h2>Modifier les Actualités</h2>
+      <textarea id="newsEditor" rows="6"></textarea><br>
+      <button onclick="saveNews()">💾 Enregistrer</button>
+    </section>
+
+    <section id="eventsEdit" class="adminSection" style="display:none;">
+      <h2>Modifier les Évènements</h2>
+      <textarea id="eventsEditor" rows="6"></textarea><br>
+      <button onclick="saveEvents()">💾 Enregistrer</button>
+    </section>
+  </main>
+</div>
+
+<footer>© 2025 - Panneau Admin</footer>
+<script src="js/admin.js"></script>
+</body>
+</html>

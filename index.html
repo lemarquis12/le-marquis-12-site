@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Communauté - le_marquis_12</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top-header animated-header">
+    <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo">
+    <h1 class="site-title">Communauté du marquis 12</h1>
+</header>
+
+<div class="tab">
+  <button class="tablinks active" onclick="openTab(event, 'stream')">Live</button>
+  <button class="tablinks" onclick="openTab(event, 'news')">Actualités</button>
+  <button class="tablinks" onclick="openTab(event, 'events')">Évènements</button>
+  <button class="tablinks" onclick="openTab(event, 'boutique')">Boutique</button>
+  <button class="tablinks" onclick="openTab(event, 'socials')">Réseaux</button>
+</div>
+
+<div id="stream" class="tabcontent" style="display:block;">
+  <h2>Live Twitch & Chat</h2>
+  <div id="streamChatContainer">
+    <iframe src="https://player.twitch.tv/?channel=lemarquis12&parent=le-marquis-12.github.io" allowfullscreen></iframe>
+    <iframe src="https://www.twitch.tv/embed/lemarquis12/chat?parent=le-marquis-12.github.io"></iframe>
+  </div>
+</div>
+
+<div id="news" class="tabcontent">
+  <h2>Actualités</h2>
+  <div id="newsContent">Pas encore d'actualités disponibles.</div>
+</div>
+
+<div id="events" class="tabcontent">
+  <h2>Évènements</h2>
+  <div id="eventsContent">Pas encore d'évènements programmés.</div>
+</div>
+
+<div id="boutique" class="tabcontent">
+  <h2>Boutique</h2>
+  <p>T-shirts, stickers et goodies exclusifs pour les fans.</p>
+</div>
+
+<div id="socials" class="tabcontent">
+  <h2>Réseaux Sociaux 🌐</h2>
+  <ul class="social-list">
+    <li><a href="https://twitch.tv/lemarquis12" target="_blank">🎮 Twitch</a></li>
+    <li><a href="https://youtube.com/@le_marquis_12" target="_blank">▶️ YouTube</a></li>
+    <li><a href="https://tiktok.com/@le_marquis_124" target="_blank">🎵 TikTok</a></li>
+    <li><a href="https://instagram.com/le_marquis12" target="_blank">📷 Instagram</a></li>
+  </ul>
+</div>
+
+<footer class="footer">
+    <p>© 2025 - Communauté du marquis 12</p>
+    <div class="footer-social">
+        <a href="https://twitch.tv/lemarquis12" target="_blank"><img src="image/twitch.png" alt="Twitch"></a>
+        <a href="https://youtube.com/@le_marquis_12" target="_blank"><img src="image/youtube.png" alt="YouTube"></a>
+        <a href="https://www.tiktok.com/@le_marquis_124" target="_blank"><img src="image/tiktok.png" alt="TikTok"></a>
+        <a href="https://instagram.com/le_marquis12" target="_blank"><img src="image/instagram.png" alt="Instagram"></a>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
