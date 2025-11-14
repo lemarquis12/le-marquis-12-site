@@ -1,176 +1,169 @@
-/* ==== BASE ==== */
-body {
-  margin:0;
-  font-family:'Segoe UI',Tahoma,sans-serif;
-  background:#0c0c0c;
-  color:#f0f0f0;
-  padding-top:90px;
-  transition:background 0.3s;
-}
-
-/* ==== HEADER ==== */
-.top-header.animated-header{
-  position:fixed; top:0; left:0;
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:20px;
-  background:rgba(15,15,15,0.95);
-  padding:15px 20px;
-  z-index:9999;
-  border-bottom:2px solid #330000;
-  backdrop-filter:blur(8px);
-  animation:fadeDown .8s ease-out forwards;
-  opacity:0;
-  transition:all 0.3s ease, box-shadow 0.3s ease;
-  box-shadow:0 0 0 #e63946;
-}
-.top-header.shrink{
-  padding:8px 20px;
-  border-bottom:2px solid #220000;
-  box-shadow:0 0 20px #e63946;
-}
-.top-header .logo{
-  height:60px;
-  opacity:0;
-  animation:logoPop .8s ease .2s forwards,logoGlow 4s ease-in-out infinite;
-  transition:all 0.3s ease;
-}
-.top-header.shrink .logo{height:40px;}
-.top-header .site-title{
-  font-size:28px;
-  color:#f0f0f0;
-  margin:0;
-  opacity:0;
-  animation:textFade 1s ease-out .3s forwards;
-  text-shadow:0 0 5px #e63946,0 0 10px #e63946;
-}
-.top-header.shrink .site-title{font-size:22px;}
-
-/* ==== ANIMATIONS ==== */
-@keyframes fadeDown{0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);}}
-@keyframes textFade{0%{opacity:0;transform:translateX(-20px);}100%{opacity:1;transform:translateX(0);}}
-@keyframes logoPop{0%{opacity:0;transform:scale(.6);}100%{opacity:1;transform:scale(1);}}
-@keyframes logoGlow{0%{filter:drop-shadow(0 0 0px #e63946);}50%{filter:drop-shadow(0 0 15px #ff4c4c);}100%{filter:drop-shadow(0 0 0px #e63946);}}
-@keyframes overlayPulse{0%{background:rgba(0,0,0,0.3);}50%{background:rgba(0,0,0,0.55);}100%{background:rgba(0,0,0,0.3);}}
-
-/* ==== TABS ==== */
-.tab{
-  display:flex;
-  justify-content:center;
-  background:#1a0a0a;
-  padding:10px;
-  gap:10px;
-}
-.tab button{
-  border:none;
-  background:#220808;
-  color:#f0f0f0;
-  padding:10px 20px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:0.3s;
-  text-shadow:0 0 5px #e63946;
-}
-.tab button:hover,.tab button.active{
-  background:#e63946;
-  color:#fff;
-  box-shadow:0 0 10px #ff4c4c,0 0 20px #e63946;
-  transform:scale(1.05);
-}
-
-/* ==== TAB CONTENT ==== */
-.tabcontent{
-  display:none;
-  padding:20px;
-}
-
-/* ==== STREAM BACKGROUND ==== */
-#stream{
-  background-image:url('../image/ta_image.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  position:relative;
-  overflow:hidden;
-  border-radius:10px;
-}
-#stream::before{
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.4);
-  pointer-events:none;
-  animation:overlayPulse 6s ease-in-out infinite alternate;
-  z-index:0;
-}
-#streamChatContainer{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-  position:relative;
-  z-index:1;
-}
-#streamChatContainer iframe{
-  flex:1 1 400px;
-  max-width:600px;
-  height:480px;
-  border:2px solid #e63946;
-  border-radius:8px;
-}
-@media(max-width:768px){
-  #streamChatContainer{flex-direction:column;}
-  #streamChatContainer iframe{max-width:100%;height:400px;}
-}
-/* ==== background ==== */
-body {
+/* ============================
+   GLOBAL : Background + Police
+============================ */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: linear-gradient(135deg, #1a0000, #4d0000, #990000);
     color: #f0f0f0;
-    padding-top: 90px; /* pour ton header fixe */
+
+    /* 🔥 Dégradé rouge sombre animé */
+    background: linear-gradient(270deg, #1a0000, #4d0000, #800000, #330000);
+    background-size: 800% 800%;
+    animation: gradientBG 25s ease infinite;
+
+    padding-top: 110px; /* espace pour le header */
+    min-height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============================
+   HEADER Avec animation
+============================ */
+
+.top-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 25px;
+
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.4);
+
+    z-index: 1000;
+
+    /* 🔥 Apparition animée */
+    animation: slideHeader 1.2s ease-out forwards;
+}
+
+@keyframes slideHeader {
+    0% { transform: translateY(-100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Logo avec animation */
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    animation: pulseLogo 3s infinite ease-in-out;
+}
+
+@keyframes pulseLogo {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+}
+
+/* Mobile : logo animation différente */
+@media (max-width: 600px) {
+    @keyframes pulseLogo {
+        0%,100% { transform: rotate(0deg); }
+        50% { transform: rotate(6deg); }
+    }
+}
+
+/* Titre */
+.site-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px rgba(255,0,0,0.7);
 }
 
 
+/* ============================
+   Onglets (tabs)
+============================ */
 
-/* ==== RESEAUX ==== */
-.social-list{
-  list-style:none;
-  display:flex;
-  gap:20px;
-  justify-content:center;
-}
-.social-list li a{
-  color:#f0f0f0;
-  text-decoration:none;
-  text-shadow:0 0 5px #e63946;
-  transition:0.3s;
-}
-.social-list li a:hover{
-  color:#fff;
-  text-shadow:0 0 10px #ff4c4c,0 0 20px #e63946;
+.tab {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
 }
 
-/* ==== FOOTER ==== */
-.footer{
-  margin-top:40px;
-  padding:20px;
-  text-align:center;
-  color:#aaa;
-  background:#0c0c0c;
+.tab button {
+    background: rgba(255, 0, 0, 0.35);
+    border: 1px solid rgba(255,0,0,0.4);
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
 }
-.footer-social img{
-  width:26px;
-  margin:0 8px;
-  opacity:.7;
-  transition:.3s;
+
+.tab button:hover {
+    background: rgba(255,0,0,0.6);
+    transform: scale(1.05);
 }
-.footer-social img:hover{
-  opacity:1;
-  transform:scale(1.3);
-  filter:drop-shadow(0 0 10px #e63946);
+
+.tabcontent {
+    animation: fade 0.8s ease;
+    padding: 20px;
 }
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================
+   FOOTER
+============================ */
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: rgba(0,0,0,0.4);
+    border-top: 2px solid rgba(255,0,0,0.4);
+}
+
+.footer-social img {
+    width: 35px;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.footer-social img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 6px red);
+}
+
+/* ============================
+   Twitch iframes
+============================ */
+
+#streamChatContainer iframe {
+    width: 48%;
+    height: 500px;
+    border: 2px solid rgba(255,0,0,0.4);
+    border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    #streamChatContainer iframe {
+        width: 100%;
+        height: 420px;
+        margin-bottom: 15px;
+    }
+}
+
 
 
