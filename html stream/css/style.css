@@ -1,0 +1,164 @@
+/* ==== BASE ==== */
+body {
+  margin:0;
+  font-family:'Segoe UI',Tahoma,sans-serif;
+  background:#0c0c0c;
+  color:#f0f0f0;
+  padding-top:90px;
+  transition:background 0.3s;
+}
+
+/* ==== HEADER ==== */
+.top-header.animated-header{
+  position:fixed; top:0; left:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  background:rgba(15,15,15,0.95);
+  padding:15px 20px;
+  z-index:9999;
+  border-bottom:2px solid #330000;
+  backdrop-filter:blur(8px);
+  animation:fadeDown .8s ease-out forwards;
+  opacity:0;
+  transition:all 0.3s ease, box-shadow 0.3s ease;
+  box-shadow:0 0 0 #e63946;
+}
+.top-header.shrink{
+  padding:8px 20px;
+  border-bottom:2px solid #220000;
+  box-shadow:0 0 20px #e63946;
+}
+.top-header .logo{
+  height:60px;
+  opacity:0;
+  animation:logoPop .8s ease .2s forwards,logoGlow 4s ease-in-out infinite;
+  transition:all 0.3s ease;
+}
+.top-header.shrink .logo{height:40px;}
+.top-header .site-title{
+  font-size:28px;
+  color:#f0f0f0;
+  margin:0;
+  opacity:0;
+  animation:textFade 1s ease-out .3s forwards;
+  text-shadow:0 0 5px #e63946,0 0 10px #e63946;
+}
+.top-header.shrink .site-title{font-size:22px;}
+
+/* ==== ANIMATIONS ==== */
+@keyframes fadeDown{0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes textFade{0%{opacity:0;transform:translateX(-20px);}100%{opacity:1;transform:translateX(0);}}
+@keyframes logoPop{0%{opacity:0;transform:scale(.6);}100%{opacity:1;transform:scale(1);}}
+@keyframes logoGlow{0%{filter:drop-shadow(0 0 0px #e63946);}50%{filter:drop-shadow(0 0 15px #ff4c4c);}100%{filter:drop-shadow(0 0 0px #e63946);}}
+@keyframes overlayPulse{0%{background:rgba(0,0,0,0.3);}50%{background:rgba(0,0,0,0.55);}100%{background:rgba(0,0,0,0.3);}}
+
+/* ==== TABS ==== */
+.tab{
+  display:flex;
+  justify-content:center;
+  background:#1a0a0a;
+  padding:10px;
+  gap:10px;
+}
+.tab button{
+  border:none;
+  background:#220808;
+  color:#f0f0f0;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+  text-shadow:0 0 5px #e63946;
+}
+.tab button:hover,.tab button.active{
+  background:#e63946;
+  color:#fff;
+  box-shadow:0 0 10px #ff4c4c,0 0 20px #e63946;
+  transform:scale(1.05);
+}
+
+/* ==== TAB CONTENT ==== */
+.tabcontent{
+  display:none;
+  padding:20px;
+}
+
+/* ==== STREAM BACKGROUND ==== */
+#stream{
+  background-image:url('../image/ta_image.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+}
+#stream::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.4);
+  pointer-events:none;
+  animation:overlayPulse 6s ease-in-out infinite alternate;
+  z-index:0;
+}
+#streamChatContainer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+}
+#streamChatContainer iframe{
+  flex:1 1 400px;
+  max-width:600px;
+  height:480px;
+  border:2px solid #e63946;
+  border-radius:8px;
+}
+@media(max-width:768px){
+  #streamChatContainer{flex-direction:column;}
+  #streamChatContainer iframe{max-width:100%;height:400px;}
+}
+
+/* ==== RESEAUX ==== */
+.social-list{
+  list-style:none;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+}
+.social-list li a{
+  color:#f0f0f0;
+  text-decoration:none;
+  text-shadow:0 0 5px #e63946;
+  transition:0.3s;
+}
+.social-list li a:hover{
+  color:#fff;
+  text-shadow:0 0 10px #ff4c4c,0 0 20px #e63946;
+}
+
+/* ==== FOOTER ==== */
+.footer{
+  margin-top:40px;
+  padding:20px;
+  text-align:center;
+  color:#aaa;
+  background:#0c0c0c;
+}
+.footer-social img{
+  width:26px;
+  margin:0 8px;
+  opacity:.7;
+  transition:.3s;
+}
+.footer-social img:hover{
+  opacity:1;
+  transform:scale(1.3);
+  filter:drop-shadow(0 0 10px #e63946);
+}
