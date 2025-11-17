@@ -15,7 +15,12 @@ window.addEventListener('scroll',function(){
     if(window.scrollY>50){header.classList.add('shrink');}
     else{header.classList.remove('shrink');}
 });
-
+<div id="stream" class="tabcontent" style="display:block;">
+  <h2>Live Twitch & Chat</h2>
+  <div id="streamChatContainer">
+   <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+<div id="<player div ID>"></div>
+<script type="text/javascript">
 // LOGIN ADMIN
 function loginAdmin(){
     const username = document.getElementById('username').value;
@@ -67,3 +72,4 @@ function loadData(){
     if(news) document.getElementById('newsEditor').value = news;
     if(events) document.getElementById('eventsEditor').value = events;
 }
+
