@@ -15,33 +15,7 @@ window.addEventListener('scroll',function(){
     if(window.scrollY>50){header.classList.add('shrink');}
     else{header.classList.remove('shrink');}
 });
-<div id="stream" class="tabcontent" style="display:block;">
-  <h2>Live Twitch & Chat</h2>
-  <div id="streamChatContainer">
-   <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
-<div id="<player div ID>"></div>
-<script type="text/javascript">
-// LOGIN ADMIN
-function loginAdmin(){
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const loginMessage = document.getElementById('loginMessage');
 
-    if(username === 'admin' && password === '1234'){
-        document.getElementById('loginSection').style.display = 'none';
-        document.getElementById('adminPanel').style.display = 'flex';
-        loadData();
-    } else {
-        loginMessage.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
-        loginMessage.style.color = 'red';
-    }
-}
-
-// LOGOUT
-function logout(){
-    document.getElementById('loginSection').style.display = 'block';
-    document.getElementById('adminPanel').style.display = 'none';
-}
 
 // AFFICHER LES SECTIONS
 function showSection(sectionId){
@@ -72,4 +46,5 @@ function loadData(){
     if(news) document.getElementById('newsEditor').value = news;
     if(events) document.getElementById('eventsEditor').value = events;
 }
+
 
