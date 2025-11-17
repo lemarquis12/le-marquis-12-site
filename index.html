@@ -5,60 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Communauté - le_marquis_12</title>
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" type="image/png" href="image/icon_TacticalBoy.png">
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="top-header animated-header">
-    <a href="index.html">
-        <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo">
-    </a>
+    <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo" onclick="openAdminPanel()">
     <h1 class="site-title">Communauté du marquis 12</h1>
 </header>
 
+<!-- ONGLETS -->
 <div class="tab">
-  <button class="tablinks active" onclick="openTab(event, 'stream')">Live</button>
-  <button class="tablinks" onclick="openTab(event, 'news')">Actualités</button>
-  <button class="tablinks" onclick="openTab(event, 'events')">Évènements</button>
-  <button class="tablinks" onclick="openTab(event, 'boutique')">Boutique</button>
-  <button class="tablinks" onclick="openTab(event, 'socials')">Réseaux</button>
+  <button class="tablinks active" onclick="openTab(event,'stream')">Live</button>
+  <button class="tablinks" onclick="openTab(event,'news')">Actualités</button>
+  <button class="tablinks" onclick="openTab(event,'events')">Évènements</button>
+  <button class="tablinks" onclick="openTab(event,'boutique')">Boutique</button>
+  <button class="tablinks" onclick="openTab(event,'socials')">Réseaux</button>
 </div>
 
+<!-- STREAM -->
 <div id="stream" class="tabcontent">
   <h2>Live Twitch & Chat</h2>
   <div class="stream-wrapper">
-    <!-- GRAND LECTEUR -->
-    <iframe
-        class="stream-player"
+    <iframe class="stream-player"
         src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
         allowfullscreen>
     </iframe>
-
-    <!-- CHAT avec overlay -->
-    <div class="chat-overlay">
-      <iframe
-          class="stream-chat"
-          src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io">
-      </iframe>
-    </div>
+    <iframe class="stream-chat"
+        src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io">
+    </iframe>
   </div>
 </div>
 
+<!-- ACTUALITÉS -->
 <div id="news" class="tabcontent">
   <h2>Actualités</h2>
   <div id="newsContent">Pas encore d'actualités disponibles.</div>
 </div>
 
+<!-- ÉVÈNEMENTS -->
 <div id="events" class="tabcontent">
   <h2>Évènements</h2>
   <div id="eventsContent">Pas encore d'évènements programmés.</div>
 </div>
 
+<!-- BOUTIQUE -->
 <div id="boutique" class="tabcontent">
   <h2>Boutique</h2>
   <p>T-shirts, stickers et goodies exclusifs pour les fans.</p>
 </div>
 
+<!-- RÉSEAUX SOCIAUX -->
 <div id="socials" class="tabcontent">
   <h2>Réseaux Sociaux 🌐</h2>
   <ul class="social-list">
@@ -69,6 +66,7 @@
   </ul>
 </div>
 
+<!-- FOOTER -->
 <footer class="footer">
     <p>© 2025 - Communauté du marquis 12</p>
     <div class="footer-social">
@@ -79,8 +77,28 @@
     </div>
 </footer>
 
+<!-- PANNEAU ADMIN (caché) -->
+<div id="adminPanel">
+    <div id="loginSection">
+        <h3>Connexion Admin</h3>
+        <input type="text" id="username" placeholder="Nom d'utilisateur">
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button onclick="loginAdmin()">Se connecter</button>
+        <p id="loginMessage"></p>
+    </div>
+
+    <div id="adminContent">
+        <button onclick="logout()">🚪 Déconnexion</button>
+        <h2>Modifier Actualités</h2>
+        <textarea id="newsEditor" rows="6"></textarea><br>
+        <button onclick="saveNews()">💾 Enregistrer</button>
+
+        <h2>Modifier Évènements</h2>
+        <textarea id="eventsEditor" rows="6"></textarea><br>
+        <button onclick="saveEvents()">💾 Enregistrer</button>
+    </div>
+</div>
+
 <script src="js/main.js"></script>
 </body>
 </html>
-
-
