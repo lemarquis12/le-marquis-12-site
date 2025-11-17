@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Communauté - le_marquis_12</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="image/icon_TacticalBoy.png">
 </head>
 <body>
 
@@ -14,7 +15,6 @@
     </a>
     <h1 class="site-title">Communauté du marquis 12</h1>
 </header>
-
 
 <div class="tab">
   <button class="tablinks active" onclick="openTab(event, 'stream')">Live</button>
@@ -26,20 +26,21 @@
 
 <div id="stream" class="tabcontent">
   <h2>Live Twitch & Chat</h2>
-
   <div class="stream-wrapper">
-
+    <!-- GRAND LECTEUR -->
     <iframe
         class="stream-player"
         src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
         allowfullscreen>
     </iframe>
 
-    <iframe
-        class="stream-chat"
-        src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io">
-    </iframe>
-
+    <!-- CHAT avec overlay -->
+    <div class="chat-overlay">
+      <iframe
+          class="stream-chat"
+          src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io">
+      </iframe>
+    </div>
   </div>
 </div>
 
@@ -81,11 +82,5 @@
 <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
 
 
