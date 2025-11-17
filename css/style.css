@@ -51,3 +51,22 @@ footer{background:#111;padding:10px;text-align:center;color:#aaa;margin-top:40px
 #loginSection input,#loginSection button,#adminContent textarea,#adminContent button{width:90%;margin:5px 0;padding:10px;border-radius:6px;border:none;}
 #adminContent button{background:#9146FF;color:white;}
 #adminContent button:hover{background:#772ce8;}
+.admin-btn {
+    margin-left:auto;
+    padding:8px 12px;
+    background:#9146FF;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+.admin-btn:hover {background:#772ce8;}
+
+.vod-player {
+    width:80%;
+    max-width:900px;
+    height:500px;
+    border:none;
+    border-radius:12px;
+}
+
