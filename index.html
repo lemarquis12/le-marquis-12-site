@@ -24,21 +24,17 @@
 <div id="stream" class="tabcontent">
   <h2>Live Twitch & Chat</h2>
 
-  <div id="streamChatContainer">
-    
-    <!-- PLAYER TWITCH -->
+  <div class="stream-wrapper">
+
     <iframe
+        class="stream-player"
         src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
-        height="480"
-        width="100%"
         allowfullscreen>
     </iframe>
 
-    <!-- CHAT TWITCH -->
     <iframe
-        src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"
-        height="500"
-        width="100%">
+        class="stream-chat"
+        src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io">
     </iframe>
 
   </div>
@@ -93,6 +89,7 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
 
 
 
