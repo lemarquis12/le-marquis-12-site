@@ -1,58 +1,35 @@
-/* ===== ADMIN ===== */
-const adminUser = "le_marquis_12";
-const adminPass = "monmotdepasse"; // change le mot de passe
+/* Onglets */
+function openTab(evt, tabName){
+  const tabcontent=document.querySelectorAll(".tabcontent");
+  tabcontent.forEach(tc=>tc.style.display="none");
+  const tablinks=document.querySelectorAll(".tab button");
+  tablinks.forEach(t=>t.classList.remove("active"));
+  document.getElementById(tabName).style.display="block";
+  evt.currentTarget.classList.add("active");
+}
+document.querySelector(".tab button.active").click();
 
-window.onload = function() {
-    const adminPanel = document.getElementById("adminPanel");
-    const adminBtn = document.getElementById("adminBtn");
-    const loginBtn = document.getElementById("loginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-
-    document.getElementById("adminContent").style.display = "none";
-
-    adminBtn.addEventListener("click", () => {
-        adminPanel.style.display = "block";
-    });
-
-    logoutBtn.addEventListener("click", () => {
-        adminPanel.style.display = "none";
-        document.getElementById("loginSection").style.display = "block";
-        document.getElementById("adminContent").style.display = "none";
-    });
-
-    loginBtn.addEventListener("click", () => {
-        const u = document.getElementById("username").value;
-        const p = document.getElementById("password").value;
-        const msg = document.getElementById("loginMessage");
-        if(u === adminUser && p === adminPass){
-            document.getElementById("loginSection").style.display = "none";
-            document.getElementById("adminContent").style.display = "block";
-
-            if(localStorage.getItem("newsContent"))
-                document.getElementById("newsEditor").value = localStorage.getItem("newsContent");
-            if(localStorage.getItem("eventsContent"))
-                document.getElementById("eventsEditor").value = localStorage.getItem("eventsContent");
-        } else {
-            msg.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
-        }
-    });
-
-    document.getElementById("saveNewsBtn").addEventListener("click", () => {
-        const n = document.getElementById("newsEditor").value;
-        localStorage.setItem("newsContent", n);
-        document.getElementById("newsContent").innerHTML = n;
-        alert("Actualités enregistrées !");
-    });
-
-    document.getElementById("saveEventsBtn").addEventListener("click", () => {
-        const e = document.getElementById("eventsEditor").value;
-        localStorage.setItem("eventsContent", e);
-        document.getElementById("eventsContent").innerHTML = e;
-        alert("Évènements enregistrés !");
-    });
+/* Retour accueil */
+function goHome(){
+  document.querySelector(".tab button.active").click();
 }
 
-/* ===== SCROLL SECTIONS ===== */
-function scrollToSection(sectionId){
-    document.getElementById(sectionId).scrollIntoView({behavior:"smooth"});
+/* Charger contenu depuis admin (LocalStorage) */
+function loadContent(){
+  const news=localStorage.getItem("newsContent");
+  if(news) document.getElementById("newsContent").innerHTML=news;
+  const events=localStorage.getItem("eventsContent");
+  if(events) document.getElementById("eventsContent").innerHTML=events;
+  const vods=JSON.parse(localStorage.getItem("vods")||"[]");
+  const vodContainer=document.getElementById("vodContainer");
+  vodContainer.innerHTML="";
+  vods.forEach(v=>{
+      const iframe=document.createElement("iframe");
+      iframe.src=v.url;
+      iframe.width="600";
+      iframe.height="340";
+      iframe.allowFullscreen=true;
+      vodContainer.appendChild(iframe);
+  });
 }
+loadContent();
