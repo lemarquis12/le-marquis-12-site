@@ -21,17 +21,29 @@
   <button class="tablinks" onclick="openTab(event, 'socials')">Réseaux</button>
 </div>
 
-<div id="stream" class="tabcontent" style="display:block;">
+<div id="stream" class="tabcontent">
   <h2>Live Twitch & Chat</h2>
+
   <div id="streamChatContainer">
-   <!-- Intégration Twitch -->
-    <iframe 
-        src="https://player.twitch.tv/?channel=lemarquis12&parent=https://lemarquis12.github.io/le-marquis-12-site/" 
-        height="720" 
-        width="1280" 
-        allowfullscreen="true">
+    
+    <!-- PLAYER TWITCH -->
+    <iframe
+        src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
+        height="480"
+        width="100%"
+        allowfullscreen>
     </iframe>
-        
+
+    <!-- CHAT TWITCH -->
+    <iframe
+        src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"
+        height="500"
+        width="100%">
+    </iframe>
+
+  </div>
+</div>
+
 
 <!-- Chat Twitch -->
 <iframe
@@ -81,6 +93,7 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
 
 
 
