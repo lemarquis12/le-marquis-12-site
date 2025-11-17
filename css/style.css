@@ -171,6 +171,42 @@ body {
     }
 }
 
+.stream-wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+}
+
+/* Player + Chat côte à côte sur PC */
+.stream-player {
+    flex: 3;           /* Plus large */
+    height: 500px;
+    border: none;
+}
+
+.stream-chat {
+    flex: 1;           /* Plus petit */
+    height: 500px;
+    border: none;
+}
+
+/* Version mobile */
+@media (max-width: 800px) {
+    .stream-wrapper {
+        flex-direction: column;
+    }
+
+    .stream-player,
+    .stream-chat {
+        height: 350px;   /* hauteur plus petite pour mobile */
+        width: 100%;
+    }
+}
+
+
+
 
 
 
