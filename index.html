@@ -17,7 +17,6 @@
 
 <nav class="tab" role="navigation" aria-label="Menu principal">
   <button class="tab-btn active" data-target="stream">Live</button>
-  <button class="tab-btn" data-target="vod">VOD</button>
   <button class="tab-btn" data-target="news">Actualités</button>
   <button class="tab-btn" data-target="events">Évènements</button>
   <button class="tab-btn" data-target="boutique">Boutique</button>
@@ -29,18 +28,16 @@
   <section id="stream" class="section active">
     <h2>Live Twitch & Chat</h2>
     <div class="stream-wrapper">
-      <iframe class="stream-player" src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io" allowfullscreen title="Lecteur Twitch - lemarquis12"></iframe>
+      <iframe class="stream-player"
+        src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
+        allowfullscreen
+        title="Lecteur Twitch - lemarquis12"></iframe>
       <div class="chat-overlay">
-        <iframe class="stream-chat" src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io" title="Chat Twitch - lemarquis12"></iframe>
+        <iframe class="stream-chat"
+          src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"
+          title="Chat Twitch - lemarquis12"></iframe>
       </div>
     </div>
-    <h3>VOD récentes</h3>
-    <div id="vodContainer" class="vod-container"></div>
-  </section>
-
-  <section id="vod" class="section">
-    <h2>VOD / Replays</h2>
-    <div id="vodContainerPage" class="vod-container"></div>
   </section>
 
   <section id="news" class="section">
