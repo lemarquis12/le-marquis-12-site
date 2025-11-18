@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Communauté - le_marquis_12</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="image/icon_TacticalBoy.png">
@@ -12,7 +12,6 @@
 <header class="top-header">
   <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo" id="homeBtn">
   <h1 class="site-title">Communauté du marquis 12</h1>
-  <button class="admin-btn" id="openAdminBtn">Admin 🔒</button>
 </header>
 
 <nav class="tab" role="navigation" aria-label="Menu principal">
@@ -25,13 +24,12 @@
 
 <main id="mainContent">
 
-  <section id="stream" class="section active">
+  <section id="stream" class="section">
     <h2>Live Twitch & Chat</h2>
     <div class="stream-wrapper">
-      <iframe class="stream-player"
+      <iframe class="stream-player" 
         src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
-        allowfullscreen
-        title="Lecteur Twitch - lemarquis12"></iframe>
+        allowfullscreen title="Lecteur Twitch - lemarquis12"></iframe>
       <div class="chat-overlay">
         <iframe class="stream-chat"
           src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"
@@ -58,10 +56,10 @@
   <section id="socials" class="section">
     <h2>Réseaux Sociaux 🌐</h2>
     <ul class="social-list">
-      <li><a href="https://twitch.tv/lemarquis12" target="_blank" rel="noopener">🎮 Twitch</a></li>
-      <li><a href="https://youtube.com/@le_marquis_12" target="_blank" rel="noopener">▶️ YouTube</a></li>
-      <li><a href="https://tiktok.com/@le_marquis_124" target="_blank" rel="noopener">🎵 TikTok</a></li>
-      <li><a href="https://instagram.com/le_marquis12" target="_blank" rel="noopener">📷 Instagram</a></li>
+      <li><a href="https://twitch.tv/lemarquis12" target="_blank">🎮 Twitch</a></li>
+      <li><a href="https://youtube.com/@le_marquis_12" target="_blank">▶️ YouTube</a></li>
+      <li><a href="https://tiktok.com/@le_marquis_124" target="_blank">🎵 TikTok</a></li>
+      <li><a href="https://instagram.com/le_marquis12" target="_blank">📷 Instagram</a></li>
     </ul>
   </section>
 
@@ -69,17 +67,10 @@
 
 <footer class="footer">
   <p>© 2025 - Communauté du marquis 12</p>
-  <div class="footer-social">
-    <a href="https://twitch.tv/lemarquis12" target="_blank" rel="noopener"><img src="image/twitch.png" alt="Twitch"></a>
-    <a href="https://youtube.com/@le_marquis_12" target="_blank" rel="noopener"><img src="image/youtube.png" alt="YouTube"></a>
-    <a href="https://www.tiktok.com/@le_marquis_124" target="_blank" rel="noopener"><img src="image/tiktok.png" alt="TikTok"></a>
-    <a href="https://instagram.com/le_marquis12" target="_blank" rel="noopener"><img src="image/instagram.png" alt="Instagram"></a>
-  </div>
 </footer>
 
-<div id="adminModal" class="admin-modal hidden" aria-hidden="true"></div>
-
 <script src="js/main.js"></script>
-<script src="js/admin.js"></script>
 </body>
 </html>
+
+
