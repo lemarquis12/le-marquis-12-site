@@ -1,38 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- onglets / nav
-  const tabBtns = document.querySelectorAll(".tab .tab-btn");
-  const sections = document.querySelectorAll(".section");
-
-  function activate(targetId){
-    sections.forEach(s => s.classList.toggle("active", s.id === targetId));
-    tabBtns.forEach(b => b.classList.toggle("active", b.dataset.target === targetId));
-  }
-
+  // menu onglets avec scroll
+  const tabBtns = document.querySelectorAll(".tab-btn");
   tabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      activate(btn.dataset.target);
-      window.scrollTo({top:0,behavior:"smooth"});
+      const target = document.getElementById(btn.dataset.target);
+      if(target) target.scrollIntoView({behavior:"smooth"});
+      
+      // style actif
+      tabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
     });
   });
 
-  // initial show first tab (stream)
-  const first = document.querySelector(".tab .tab-btn")?.dataset.target || "stream";
-  activate(first);
-
-  // --- bouton admin
-  const openAdminBtn = document.getElementById("openAdminBtn");
-  openAdminBtn?.addEventListener("click", () => {
-    if(window.showAdminModal) window.showAdminModal();
-  });
-
-  // load stored content (news/events)
-  loadStoredContent();
+  // logo = scroll top
+  const homeBtn = document.getElementById("homeBtn");
+  homeBtn?.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
 });
 
-function loadStoredContent(){
-  const news = localStorage.getItem("newsContent");
-  if(news) document.getElementById("newsContent").innerHTML = news;
-
-  const events = localStorage.getItem("eventsContent");
-  if(events) document.getElementById("eventsContent").innerHTML = events;
-}
