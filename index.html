@@ -4,81 +4,93 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Communauté - le_marquis_12</title>
-
-<!-- CSS correctement chargé -->
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="image/icon_TacticalBoy.png">
 </head>
 <body>
 
 <header class="top-header animated-header">
-    <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo" id="homeBtn">
-    <h1 class="site-title">Communauté du marquis 12</h1>
-    <!-- Bouton Admin visible -->
-    <button id="adminBtn" class="admin-btn">Admin 🔒</button>
+  <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo" id="homeBtn">
+  <h1 class="site-title">Communauté du marquis 12</h1>
+  <button class="admin-btn" id="openAdminBtn">Admin 🔒</button>
 </header>
 
+<nav class="tab">
+  <button class="tab-btn active" data-target="stream">Live</button>
+  <button class="tab-btn" data-target="news">Actualités</button>
+  <button class="tab-btn" data-target="events">Évènements</button>
+  <button class="tab-btn" data-target="boutique">Boutique</button>
+  <button class="tab-btn" data-target="socials">Réseaux</button>
+</nav>
 
-<!-- BARRE D’ONGLETS -->
-<div class="tab">
-  <button class="tablinks active" onclick="openTab(event, 'stream')">Live</button>
-  <button class="tablinks" onclick="openTab(event, 'news')">Actualités</button>
-  <button class="tablinks" onclick="openTab(event, 'events')">Évènements</button>
-  <button class="tablinks" onclick="openTab(event, 'boutique')">Boutique</button>
-  <button class="tablinks" onclick="openTab(event, 'socials')">Réseaux</button>
-</div>
+<main id="mainContent">
 
-<!-- ONGLET 1 : LIVE -->
-<div id="stream" class="tabcontent" style="display: block;">
-  <h2>Live Twitch & Chat</h2>
-  <div id="streamChatContainer">
-    <iframe src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io" allowfullscreen></iframe>
-    <iframe src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"></iframe>
+  <section id="stream" class="section active">
+    <h2>Live Twitch & Chat</h2>
+    <div id="streamChatContainer">
+      <iframe src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io" allowfullscreen></iframe>
+      <iframe src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"></iframe>
+    </div>
+  </section>
+
+  <section id="news" class="section">
+    <h2>Actualités</h2>
+    <div id="newsContent">Pas encore d'actualités disponibles.</div>
+  </section>
+
+  <section id="events" class="section">
+    <h2>Évènements</h2>
+    <div id="eventsContent">Pas encore d'évènements programmés.</div>
+  </section>
+
+  <section id="boutique" class="section">
+    <h2>Boutique</h2>
+    <p>T-shirts, stickers et goodies exclusifs pour les fans.</p>
+  </section>
+
+  <section id="socials" class="section">
+    <h2>Réseaux Sociaux 🌐</h2>
+    <ul class="social-list">
+      <li><a href="https://twitch.tv/lemarquis12" target="_blank">🎮 Twitch</a></li>
+      <li><a href="https://youtube.com/@le_marquis_12" target="_blank">▶️ YouTube</a></li>
+      <li><a href="https://tiktok.com/@le_marquis_124" target="_blank">🎵 TikTok</a></li>
+      <li><a href="https://instagram.com/le_marquis12" target="_blank">📷 Instagram</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2025 - Communauté du marquis 12</p>
+  <div class="footer-social">
+    <a href="https://twitch.tv/lemarquis12" target="_blank"><img src="image/twitch.png" alt="Twitch"></a>
+    <a href="https://youtube.com/@le_marquis_12" target="_blank"><img src="image/youtube.png" alt="YouTube"></a>
+    <a href="https://www.tiktok.com/@le_marquis_124" target="_blank"><img src="image/tiktok.png" alt="TikTok"></a>
+    <a href="https://instagram.com/le_marquis12" target="_blank"><img src="image/instagram.png" alt="Instagram"></a>
+  </div>
+</footer>
+
+<!-- ADMIN MODAL -->
+<div id="adminModal" class="admin-modal hidden">
+  <div class="admin-window">
+    <button class="admin-close-btn" id="closeAdminBtn">X</button>
+    <h2>Admin Panel</h2>
+    <div class="admin-sections">
+      <div class="admin-left">
+        <h3>Actualités</h3>
+        <textarea id="newsEditor" rows="6"></textarea>
+        <button onclick="saveNews()">💾 Enregistrer</button>
+      </div>
+      <div class="admin-right">
+        <h3>Évènements</h3>
+        <textarea id="eventsEditor" rows="6"></textarea>
+        <button onclick="saveEvents()">💾 Enregistrer</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ONGLET 2 : NEWS -->
-<div id="news" class="tabcontent">
-  <h2>Actualités</h2>
-  <div id="newsContent">Pas encore d'actualités disponibles.</div>
-</div>
-
-<!-- ONGLET 3 : EVENTS -->
-<div id="events" class="tabcontent">
-  <h2>Évènements</h2>
-  <div id="eventsContent">Pas encore d'évènements programmés.</div>
-</div>
-
-<!-- ONGLET 4 : BOUTIQUE -->
-<div id="boutique" class="tabcontent">
-  <h2>Boutique</h2>
-  <p>T-shirts, stickers et goodies exclusifs pour les fans.</p>
-</div>
-
-<!-- ONGLET 5 : RESEAUX -->
-<div id="socials" class="tabcontent">
-  <h2>Réseaux Sociaux 🌐</h2>
-  <ul class="social-list">
-    <li><a href="https://twitch.tv/lemarquis12" target="_blank">🎮 Twitch</a></li>
-    <li><a href="https://youtube.com/@le_marquis_12" target="_blank">▶️ YouTube</a></li>
-    <li><a href="https://tiktok.com/@le_marquis_124" target="_blank">🎵 TikTok</a></li>
-    <li><a href="https://instagram.com/le_marquis12" target="_blank">📷 Instagram</a></li>
-  </ul>
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <p>© 2025 - Communauté du marquis 12</p>
-    <div class="footer-social">
-        <a href="https://twitch.tv/lemarquis12" target="_blank"><img src="image/twitch.png" alt="Twitch"></a>
-        <a href="https://youtube.com/@le_marquis_12" target="_blank"><img src="image/youtube.png" alt="YouTube"></a>
-        <a href="https://www.tiktok.com/@le_marquis_124" target="_blank"><img src="image/tiktok.png" alt="TikTok"></a>
-        <a href="https://instagram.com/le_marquis12" target="_blank"><img src="image/instagram.png" alt="Instagram"></a>
-    </div>
-</footer>
-
-<!-- JS correctement chargé -->
-<script src="./js/main.js" defer></script>
-
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>
-
