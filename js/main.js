@@ -1,30 +1,39 @@
-// Onglets
-const tabBtns = document.querySelectorAll(".tab-btn");
-const sections = document.querySelectorAll(".section");
+// ==== TABS ====
+const tabLinks = document.querySelectorAll('.tablinks');
+const tabContents = document.querySelectorAll('.tabcontent');
 
-tabBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    sections.forEach(s => s.classList.remove("active"));
-    document.getElementById(btn.dataset.target).classList.add("active");
-
-    tabBtns.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    window.scrollTo({top:0,behavior:"smooth"});
+tabLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const target = link.dataset.target;
+    // masquer toutes les sections
+    tabContents.forEach(sec => sec.style.display = 'none');
+    // retirer active à tous les boutons
+    tabLinks.forEach(btn => btn.classList.remove('active'));
+    // afficher la section cible et bouton actif
+    document.getElementById(target).style.display = 'block';
+    link.classList.add('active');
+    // scroll top pour voir header
+    window.scrollTo({top:0, behavior:'smooth'});
   });
 });
 
-// Header animation scroll
-window.addEventListener('scroll',function(){
-    const header=document.querySelector('.top-header');
-    if(window.scrollY>50){header.classList.add('shrink');}
-    else{header.classList.remove('shrink');}
+// ==== HEADER SCROLL ====
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.top-header');
+  if(window.scrollY > 50){
+    header.classList.add('shrink');
+  } else {
+    header.classList.remove('shrink');
+  }
 });
 
-// Logo clique = scroll top
-document.getElementById('homeBtn').addEventListener('click', () => {
-  window.scrollTo({top:0, behavior:'smooth'});
+// ==== HOME BUTTON ====
+const homeBtn = document.getElementById('homeBtn');
+homeBtn.addEventListener('click', () => {
+  tabContents.forEach(sec => sec.style.display = 'block');
+  tabLinks.forEach(btn => btn.classList.remove('active'));
 });
+
 
 // Admin modal
 const openAdminBtn = document.getElementById("openAdminBtn");
@@ -38,3 +47,4 @@ openAdminBtn.addEventListener("click", () => {
 closeAdminBtn.addEventListener("click", () => {
   adminModal.classList.add("hidden");
 });
+
