@@ -1,86 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Communauté - le_marquis_12</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="image/icon_TacticalBoy.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Communauté - le_marquis_12</title>
+
+<!-- CSS correctement chargé -->
+<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
 <header class="top-header animated-header">
-  <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo" id="homeBtn">
-  <h1 class="site-title">Communauté du marquis 12</h1>
-  <button class="admin-btn" id="openAdminBtn" title="Panneau admin">Admin 🔒</button>
+    <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo">
+    <h1 class="site-title">Communauté du marquis 12</h1>
 </header>
 
-<!-- Tabs -->
-<div class="tab" role="navigation" aria-label="Menu principal">
-  <button class="tablinks active" data-target="stream">Live</button>
-  <button class="tablinks" data-target="news">Actualités</button>
-  <button class="tablinks" data-target="events">Évènements</button>
-  <button class="tablinks" data-target="boutique">Boutique</button>
-  <button class="tablinks" data-target="socials">Réseaux</button>
+<!-- BARRE D’ONGLETS -->
+<div class="tab">
+  <button class="tablinks active" onclick="openTab(event, 'stream')">Live</button>
+  <button class="tablinks" onclick="openTab(event, 'news')">Actualités</button>
+  <button class="tablinks" onclick="openTab(event, 'events')">Évènements</button>
+  <button class="tablinks" onclick="openTab(event, 'boutique')">Boutique</button>
+  <button class="tablinks" onclick="openTab(event, 'socials')">Réseaux</button>
 </div>
 
-<!-- Contents (only one visible at a time) -->
-<section id="stream" class="tabcontent" style="display:block;">
+<!-- ONGLET 1 : LIVE -->
+<div id="stream" class="tabcontent" style="display: block;">
   <h2>Live Twitch & Chat</h2>
-  <div id="stream" class="stream-area">
-    <div id="streamChatContainer">
-      <!-- REPLACE parent=... with your domain if needed (see note) -->
-      <iframe class="stream-player"
-        src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
-        allowfullscreen
-        title="Lecteur Twitch - lemarquis12"></iframe>
-
-      <iframe class="stream-chat"
-        src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"
-        title="Chat Twitch - lemarquis12"></iframe>
-    </div>
+  <div id="streamChatContainer">
+    <iframe src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io" allowfullscreen></iframe>
+    <iframe src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"></iframe>
   </div>
-</section>
+</div>
 
-<section id="news" class="tabcontent">
+<!-- ONGLET 2 : NEWS -->
+<div id="news" class="tabcontent">
   <h2>Actualités</h2>
   <div id="newsContent">Pas encore d'actualités disponibles.</div>
-</section>
+</div>
 
-<section id="events" class="tabcontent">
+<!-- ONGLET 3 : EVENTS -->
+<div id="events" class="tabcontent">
   <h2>Évènements</h2>
   <div id="eventsContent">Pas encore d'évènements programmés.</div>
-</section>
+</div>
 
-<section id="boutique" class="tabcontent">
+<!-- ONGLET 4 : BOUTIQUE -->
+<div id="boutique" class="tabcontent">
   <h2>Boutique</h2>
-  <div id="boutiqueContent">T-shirts, stickers et goodies exclusifs pour les fans.</div>
-</section>
+  <p>T-shirts, stickers et goodies exclusifs pour les fans.</p>
+</div>
 
-<section id="socials" class="tabcontent">
+<!-- ONGLET 5 : RESEAUX -->
+<div id="socials" class="tabcontent">
   <h2>Réseaux Sociaux 🌐</h2>
   <ul class="social-list">
-    <li><a id="linkTwitch" href="https://twitch.tv/lemarquis12" target="_blank" rel="noopener">🎮 Twitch</a></li>
-    <li><a id="linkYoutube" href="https://youtube.com/@le_marquis_12" target="_blank" rel="noopener">▶️ YouTube</a></li>
-    <li><a id="linkTiktok" href="https://tiktok.com/@le_marquis_124" target="_blank" rel="noopener">🎵 TikTok</a></li>
-    <li><a id="linkInsta" href="https://instagram.com/le_marquis12" target="_blank" rel="noopener">📷 Instagram</a></li>
+    <li><a href="https://twitch.tv/lemarquis12" target="_blank">🎮 Twitch</a></li>
+    <li><a href="https://youtube.com/@le_marquis_12" target="_blank">▶️ YouTube</a></li>
+    <li><a href="https://tiktok.com/@le_marquis_124" target="_blank">🎵 TikTok</a></li>
+    <li><a href="https://instagram.com/le_marquis12" target="_blank">📷 Instagram</a></li>
   </ul>
-</section>
+</div>
 
+<!-- FOOTER -->
 <footer class="footer">
-  <p>© 2025 - Communauté du marquis 12</p>
-  <div class="footer-social">
-    <a id="twitchIcon" href="https://twitch.tv/lemarquis12" target="_blank" rel="noopener"><img src="image/twitch.png" alt="Twitch"></a>
-    <a id="youtubeIcon" href="https://youtube.com/@le_marquis_12" target="_blank" rel="noopener"><img src="image/youtube.png" alt="YouTube"></a>
-    <a id="tiktokIcon" href="https://www.tiktok.com/@le_marquis_124" target="_blank" rel="noopener"><img src="image/tiktok.png" alt="TikTok"></a>
-    <a id="instaIcon" href="https://instagram.com/le_marquis12" target="_blank" rel="noopener"><img src="image/instagram.png" alt="Instagram"></a>
-  </div>
+    <p>© 2025 - Communauté du marquis 12</p>
+    <div class="footer-social">
+        <a href="https://twitch.tv/lemarquis12" target="_blank"><img src="image/twitch.png" alt="Twitch"></a>
+        <a href="https://youtube.com/@le_marquis_12" target="_blank"><img src="image/youtube.png" alt="YouTube"></a>
+        <a href="https://www.tiktok.com/@le_marquis_124" target="_blank"><img src="image/tiktok.png" alt="TikTok"></a>
+        <a href="https://instagram.com/le_marquis12" target="_blank"><img src="image/instagram.png" alt="Instagram"></a>
+    </div>
 </footer>
 
-<!-- ADMIN MODAL (HTML minimal; admin.js will populate functionality) -->
-<div id="adminModal" class="admin-modal hidden" aria-hidden="true"></div>
+<!-- JS correctement chargé -->
+<script src="./js/main.js" defer></script>
 
-<script src="js/main.js"></script>
-<script src="js/admin.js"></script>
 </body>
 </html>
