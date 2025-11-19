@@ -1,26 +1,199 @@
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:sans-serif;background:linear-gradient(135deg,#2b0000,#4a0000);color:#fff;padding-top:80px}
+/* ==== BASE ==== */
+*{box-sizing:border-box}
+body {
+  margin:0;
+  font-family:'Segoe UI',Tahoma,sans-serif;
+  background:#0c0c0c;
+  color:#f0f0f0;
+  padding-top:90px;
+  transition:background 0.3s;
+}
 
-/* Header */
-.top-header{position:fixed;top:0;width:100%;display:flex;align-items:center;gap:16px;background:rgba(0,0,0,0.9);padding:10px 20px;z-index:10}
-.logo{height:50px;cursor:pointer}
-.site-title{font-size:20px}
+/* ==== HEADER ==== */
+.top-header.animated-header{
+  position:fixed; top:0; left:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  background:rgba(15,15,15,0.95);
+  padding:15px 20px;
+  z-index:9999;
+  border-bottom:2px solid #330000;
+  backdrop-filter:blur(8px);
+  animation:fadeDown .8s ease-out forwards;
+  opacity:0;
+  transition:all 0.3s ease, box-shadow 0.3s ease;
+  box-shadow:0 0 0 #e63946;
+}
+.top-header.shrink{
+  padding:8px 20px;
+  border-bottom:2px solid #220000;
+  box-shadow:0 0 20px #e63946;
+}
+.top-header .logo{
+  height:60px;
+  opacity:0;
+  animation:logoPop .8s ease .2s forwards,logoGlow 4s ease-in-out infinite;
+  transition:all 0.3s ease;
+  cursor:pointer;
+}
+.top-header.shrink .logo{height:40px;}
+.top-header .site-title{
+  font-size:28px;
+  color:#f0f0f0;
+  margin:0;
+  opacity:0;
+  animation:textFade 1s ease-out .3s forwards;
+  text-shadow:0 0 5px #e63946,0 0 10px #e63946;
+}
+.top-header.shrink .site-title{font-size:22px;}
 
-/* Nav onglets */
-.tab{position:fixed;top:70px;width:100%;display:flex;justify-content:center;gap:10px;background:rgba(20,20,20,0.9);padding:8px;z-index:9}
-.tab-btn{padding:8px 12px;border:none;border-radius:6px;background:#333;color:#fff;cursor:pointer}
-.tab-btn.active{background:#e14a4a}
+/* ==== ANIMATIONS ==== */
+@keyframes fadeDown{0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes textFade{0%{opacity:0;transform:translateX(-20px);}100%{opacity:1;transform:translateX(0);}}
+@keyframes logoPop{0%{opacity:0;transform:scale(.6);}100%{opacity:1;transform:scale(1);}}
+@keyframes logoGlow{0%{filter:drop-shadow(0 0 0px #e63946);}50%{filter:drop-shadow(0 0 15px #ff4c4c);}100%{filter:drop-shadow(0 0 0px #e63946);}}
+@keyframes overlayPulse{0%{background:rgba(0,0,0,0.3);}50%{background:rgba(0,0,0,0.55);}100%{background:rgba(0,0,0,0.3);}}
 
-/* Sections */
-main{max-width:1000px;margin:0 auto;padding:20px}
-.section{display:none;padding:20px}
-.section.active{display:block}
+/* ==== TABS ==== */
+.tab{
+  display:flex;
+  justify-content:center;
+  background:#1a0a0a;
+  padding:10px;
+  gap:10px;
+  position:fixed;
+  top:86px;
+  left:0;
+  right:0;
+  z-index:990;
+}
+.tab button{
+  border:none;
+  background:#220808;
+  color:#f0f0f0;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+  text-shadow:0 0 5px #e63946;
+  font-size:15px;
+}
+.tab button:hover,.tab button.active{
+  background:#e63946;
+  color:#fff;
+  box-shadow:0 0 10px #ff4c4c,0 0 20px #e63946;
+  transform:scale(1.03);
+}
 
-/* Stream */
-.stream-wrapper{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.stream-player{flex:2 1 600px;min-width:300px;height:400px;border-radius:8px;border:0}
-.stream-chat{flex:1 1 250px;min-width:200px;height:400px;border-radius:8px;border:0}
-@media(max-width:800px){.stream-wrapper{flex-direction:column}.stream-player,.stream-chat{width:100%;height:350px}}
+/* ==== TAB CONTENT ==== */
+.tabcontent{
+  display:none;
+  padding:20px;
+  max-width:1200px;
+  margin:120px auto 40px;
+}
 
-/* Footer */
-footer{padding:10px;text-align:center;background:rgba(0,0,0,0.5);margin-top:20px}
+/* ==== STREAM BACKGROUND ==== */
+#stream{
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+}
+#stream::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.3);
+  pointer-events:none;
+  animation:overlayPulse 6s ease-in-out infinite alternate;
+  z-index:0;
+}
+#streamChatContainer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+}
+.stream-player{
+  flex:1 1 640px;
+  min-width:300px;
+  height:520px;
+  border:2px solid #e63946;
+  border-radius:8px;
+}
+.stream-chat{
+  flex:1 1 350px;
+  min-width:260px;
+  height:520px;
+  border:2px solid #e63946;
+  border-radius:8px;
+}
+@media(max-width:900px){
+  .stream-player,.stream-chat{width:100%;height:420px}
+}
+
+/* ==== RESEAUX ==== */
+.social-list{
+  list-style:none;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  padding:0;
+}
+.social-list li a{
+  color:#f0f0f0;
+  text-decoration:none;
+  text-shadow:0 0 5px #e63946;
+  transition:0.3s;
+}
+.social-list li a:hover{
+  color:#fff;
+  text-shadow:0 0 10px #ff4c4c,0 0 20px #e63946;
+}
+
+/* ==== FOOTER ==== */
+.footer{
+  margin-top:40px;
+  padding:20px;
+  text-align:center;
+  color:#aaa;
+  background:#0c0c0c;
+}
+.footer-social img{
+  width:26px;
+  margin:0 8px;
+  opacity:.7;
+  transition:.3s;
+}
+.footer-social img:hover{
+  opacity:1;
+  transform:scale(1.3);
+  filter:drop-shadow(0 0 10px #e63946);
+}
+
+/* ==== ADMIN MODAL (basic) ==== */
+.admin-modal.hidden{display:none}
+.admin-modal{
+  position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:2000
+}
+.admin-window{
+  width:92%;max-width:900px;background:linear-gradient(180deg,#180000,#2b0000);border-radius:12px;padding:18px;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.7);position:relative
+}
+.admin-left textarea,.admin-right textarea,input{width:100%;padding:10px;border-radius:8px;border:0;background:#2b0000;color:#fff;margin-bottom:8px}
+.admin-actions button{padding:8px 12px;border-radius:8px;border:0;background:#9146FF;color:#fff;cursor:pointer}
+
+/* small screens */
+@media(max-width:700px){
+  .tab{top:120px;flex-wrap:wrap}
+  .top-header .site-title{font-size:18px}
+  .tabcontent{margin-top:160px}
+}
+
