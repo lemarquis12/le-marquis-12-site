@@ -141,4 +141,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   openAdminBtn.addEventListener('click', openModal);
 
 });
+document.getElementById('adminBtn').addEventListener('click', () => {
+    if(window.showAdminModal) showAdminModal();
+});
+
+
 
