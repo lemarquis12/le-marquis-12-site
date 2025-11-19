@@ -48,6 +48,8 @@ body {
   text-shadow:0 0 5px #e63946,0 0 10px #e63946;
 }
 .top-header.shrink .site-title{font-size:22px;}
+.admin-btn
+
 
 /* ==== ANIMATIONS ==== */
 @keyframes fadeDown{0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);}}
@@ -196,4 +198,5 @@ body {
   .top-header .site-title{font-size:18px}
   .tabcontent{margin-top:160px}
 }
+
 
