@@ -16,11 +16,47 @@ body {margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:#0c0c0c;color
 .tabcontent,.section{display:none;padding:20px;}
 .section.active{display:block;}
 
-#stream{background-image:url('../image/ta_image.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;border-radius:10px;overflow:hidden;}
-#stream::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.4);pointer-events:none;animation:overlayPulse 6s ease-in-out infinite alternate;z-index:0;}
-#streamChatContainer{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;position:relative;z-index:1;}
-#streamChatContainer iframe{flex:1 1 400px;max-width:600px;height:480px;border:2px solid #e63946;border-radius:8px;}
-@media(max-width:768px){#streamChatContainer{flex-direction:column;}#streamChatContainer iframe{max-width:100%;height:400px;}}
+#streamChatContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: nowrap;
+}
+
+#streamChatContainer iframe {
+  border: 2px solid #e63946;
+  border-radius: 10px;
+}
+
+/* Taille vidéo */
+#streamChatContainer iframe:first-child {
+  width: 700px;
+  height: 400px;
+}
+
+/* Taille chat */
+#streamChatContainer iframe:last-child {
+  width: 350px;
+  height: 400px;
+}
+
+/* Version mobile */
+@media (max-width: 900px) {
+  #streamChatContainer {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  #streamChatContainer iframe:first-child,
+  #streamChatContainer iframe:last-child {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+  }
+}
 
 .social-list{list-style:none;display:flex;gap:20px;justify-content:center;}
 .social-list li a{color:#f0f0f0;text-decoration:none;text-shadow:0 0 5px #e63946;transition:0.3s;}
@@ -158,5 +194,6 @@ body {margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:#0c0c0c;color
   .shop-item { width: 100%; }
   .admin-tab-container { flex-direction: column; }
 }
+
 
 
