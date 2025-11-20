@@ -35,6 +35,42 @@ body {margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:#0c0c0c;color
   width: 700px;
   height: 400px;
 }
+/* === existing styles (kept) === */
+/* ... paste the CSS from the previous full file I gave you ... */
+/* I'll include the required additions here (append to your CSS) */
+
+/* small utility button */
+.small-btn{
+  padding:8px 10px;
+  border-radius:8px;
+  background:#220808;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  margin-right:8px;
+}
+.small-btn:hover{background:#e63946}
+
+/* stream header controls */
+.stream-header-controls{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-bottom:8px;
+}
+
+/* product modal */
+.product-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:3000;padding:20px}
+.product-modal.hidden{display:none}
+.product-card{width:100%;max-width:640px;background:linear-gradient(180deg,#180000,#2b0000);padding:18px;border-radius:10px;color:#fff;position:relative}
+.product-card img{width:100%;height:320px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+.product-card h3{margin:8px 0}
+.product-card p{color:#eee}
+.product-card strong{color:#ff4c4c;font-size:18px}
+
+/* shop-preview-item (admin) */
+.shop-preview-item{display:flex;justify-content:space-between;align-items:center;padding:8px;background:#220808;border-radius:8px;margin-bottom:8px}
+.shop-preview-item img{width:70px;height:48px;object-fit:cover;border-radius:6px}
 
 /* Taille chat */
 #streamChatContainer iframe:last-child {
@@ -194,6 +230,7 @@ body {margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:#0c0c0c;color
   .shop-item { width: 100%; }
   .admin-tab-container { flex-direction: column; }
 }
+
 
 
 
