@@ -280,3 +280,19 @@ body {margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:#0c0c0c;color
   background: rgba(30, 15, 15, 0.95);
 }
 
+/* Onglets responsive */
+@media (max-width: 768px) {
+  .tab {
+    flex-direction: column; /* empile les boutons */
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .tab button {
+    width: 100%; /* prend toute la largeur */
+    padding: 12px 0;
+    font-size: 16px;
+  }
+}
+
+
