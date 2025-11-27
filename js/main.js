@@ -114,3 +114,30 @@ function escapeHtml(str){
   if(!str) return '';
   return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
 }
+
+let lastScrollPos = window.scrollY;
+const header = document.querySelector("header");
+let headerHidden = false;
+
+window.addEventListener("scroll", () => {
+    const currentPos = window.scrollY;
+
+    // Scroll vers le bas → cacher le header
+    if (currentPos > lastScrollPos && currentPos > 50) {
+        if (!headerHidden) {
+            header.classList.add("header-hidden");
+            headerHidden = true;
+        }
+    }
+
+    // Scroll vers le haut → montrer le header
+    else {
+        if (headerHidden) {
+            header.classList.remove("header-hidden");
+            headerHidden = false;
+        }
+    }
+
+    lastScrollPos = currentPos;
+});
+
