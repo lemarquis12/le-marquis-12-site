@@ -1,143 +1,137 @@
-// main.js - tabs, header, chat toggle, theatre, product modal, load content
-document.addEventListener('DOMContentLoaded', () => {
-  // TABS
-  const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
-  const tabContents = Array.from(document.querySelectorAll('.tabcontent'));
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Communauté - le_marquis_12</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="image/icon_TacticalBoy.png">
+</head>
+<body>
 
-  function showTab(name){
-    tabContents.forEach(c => c.style.display = (c.id === name) ? 'block' : 'none');
-    tabBtns.forEach(b => b.classList.toggle('active', b.dataset.target === name));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  tabBtns.forEach(btn => btn.addEventListener('click', () => showTab(btn.dataset.target)));
-  showTab('stream');
+<header class="top-header animated-header" id="mainHeader">
+    <img src="image/icon_TacticalBoy.png" alt="Logo" class="logo" id="homeBtn">
+    <h1 class="site-title">Communauté du marquis 12</h1>
+</header>
 
-  // HEADER shrink
-  const header = document.querySelector('.top-header');
-  window.addEventListener('scroll', () => header.classList.toggle('shrink', window.scrollY > 50));
+<div class="tab">
+  <button class="tablinks active" data-target="stream">Live</button>
+  <button class="tablinks" data-target="news">Actualités</button>
+  <button class="tablinks" data-target="events">Évènements</button>
+  <button class="tablinks" data-target="boutique">Boutique</button>
+  <button class="tablinks" data-target="socials">Réseaux</button>
+</div>
 
-  // logo = stream
-  document.getElementById('homeBtn')?.addEventListener('click', () => showTab('stream'));
+<main id="mainContent">
+  <!-- STREAM -->
+  <section id="stream" class="tabcontent" style="display:block;">
+    <h2>Live Twitch & Chat</h2>
+    <div id="streamChatContainer">
+      <iframe src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io" allowfullscreen></iframe>
+      <iframe src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"></iframe>
+    </div>
+  </section>
 
-  // CHAT TOGGLE
-  const toggleChatBtn = document.getElementById('toggleChatBtn');
-  const twitchChat = document.getElementById('twitchChat');
-  let chatHidden = false;
-  toggleChatBtn?.addEventListener('click', () => {
-    chatHidden = !chatHidden;
-    if(chatHidden){
-      twitchChat.style.display = 'none';
-      toggleChatBtn.textContent = 'Afficher chat';
-    } else {
-      twitchChat.style.display = 'block';
-      toggleChatBtn.textContent = 'Masquer chat';
-    }
-  });
+  <!-- NEWS -->
+  <section id="news" class="tabcontent">
+    <h2>Actualités</h2>
+    <div id="newsContent">Pas encore d'actualités disponibles.</div>
+  </section>
 
-  // THEATRE MODE (expand player)
-  const theaterBtn = document.getElementById('theaterBtn');
-  const player = document.getElementById('twitchPlayer');
-  let theatre = false;
-  theaterBtn?.addEventListener('click', () => {
-    theatre = !theatre;
-    if(theatre){
-      player.style.width = '100%';
-      player.style.maxWidth = '1200px';
-      player.style.height = '720px';
-      document.getElementById('streamChatContainer').style.justifyContent = 'center';
-      theaterBtn.textContent = 'Quitter théâtre';
-    } else {
-      player.style.width = '700px';
-      player.style.height = '400px';
-      theaterBtn.textContent = 'Mode théâtre';
-      document.getElementById('streamChatContainer').style.justifyContent = '';
-    }
-    // for small screens, auto revert
-    if(window.innerWidth < 920){
-      player.style.width = '100%';
-      player.style.height = '420px';
-    }
-  });
+  <!-- EVENTS -->
+  <section id="events" class="tabcontent">
+    <h2>Évènements</h2>
+    <div id="eventsContent">Pas encore d'évènements programmés.</div>
+  </section>
 
-  // PRODUCT MODAL
-  const productModal = document.getElementById('productModal');
-  const closeProductModal = document.getElementById('closeProductModal');
-  closeProductModal?.addEventListener('click', () => productModal.classList.add('hidden'));
+  <!-- SHOP -->
+  <section id="boutique" class="tabcontent">
+    <h2>Boutique</h2>
+    <div id="shopContainer" class="shop-container"></div>
+  </section>
 
-  // click on shop items (delegation)
-  document.getElementById('shopContainer')?.addEventListener('click', (e) => {
-    const item = e.target.closest('.shop-item');
-    if(!item) return;
-    const idx = item.dataset.idx;
-    const shop = JSON.parse(localStorage.getItem('shopItems') || '[]');
-    const it = shop[parseInt(idx)];
-    if(!it) return;
-    document.getElementById('productModalImg').src = it.img;
-    document.getElementById('productModalTitle').textContent = it.title;
-    document.getElementById('productModalDesc').textContent = it.desc;
-    document.getElementById('productModalPrice').textContent = it.price + ' €';
-    productModal.classList.remove('hidden');
-  });
+  <!-- SOCIALS -->
+  <section id="socials" class="tabcontent">
+    <h2>Réseaux Sociaux 🌐</h2>
+    <div class="social-card">
+      <h3>🎮 Twitch — le_marquis_12</h3>
+      <p>Bienvenue dans <b>le seul stream où le skill est en option</b>, mais la bonne ambiance obligatoire.<br>
+      Ici, le Marquis mène des missions tactiques… souvent en <b>catastrophe contrôlée</b>.<br>
+      🔥 Viens rire et spammer le chat.</p>
+      <a class="social-btn" href="https://twitch.tv/lemarquis12" target="_blank">Accéder à Twitch</a>
+    </div>
+    <div class="social-card">
+      <h3>▶️ YouTube — le_marquis_12</h3>
+      <p>Revois :<br>✔️ Les meilleurs moments<br>✔️ Les pires fails<br>✔️ Les clips que même le Marquis voudrait oublier.<br>🎬 Bref, tout ce qui fait d’un stream une épopée (ou un accident).</p>
+      <a class="social-btn" href="https://youtube.com/@le_marquis_12" target="_blank">Accéder à YouTube</a>
+    </div>
+    <div class="social-card">
+      <h3>🎵 TikTok — @le_marquis_124</h3>
+      <p>Clips courts, rapides, et dangereux pour ta santé mentale.<br>⚡ Explosion de chaos en 10 secondes.</p>
+      <a class="social-btn" href="https://tiktok.com/@le_marquis_124" target="_blank">Accéder à TikTok</a>
+    </div>
+    <div class="social-card">
+      <h3>📷 Instagram — @le_marquis12</h3>
+      <p>QG officiel du Marquis en version stylée.<br>Photos, annonces, coulisses et parfois…<b>des posts à 3h du matin</b>.</p>
+      <a class="social-btn" href="https://instagram.com/le_marquis12" target="_blank">Accéder à Instagram</a>
+    </div>
+    <div class="social-card">
+      <h3>💬 Discord — Communauté</h3>
+      <p>Le chat officiel où tu peux discuter avec les fans.<br>🎉 Memes, conseils, et rage quit inclus.</p>
+      <a class="social-btn" href="https://discord.gg/tonlien" target="_blank">Accéder à Discord</a>
+    </div>
+  </section>
+</main>
 
-  // initial load content
-  refreshSiteContent();
-});
+<footer class="footer">
+    <p>© 2025 - Communauté du marquis 12</p>
+</footer>
 
-// refreshSiteContent used by admin after saves
-function refreshSiteContent(){
-  const news = localStorage.getItem('newsContent');
-  const events = localStorage.getItem('eventsContent');
-  const shop = JSON.parse(localStorage.getItem('shopItems') || '[]');
+<!-- PANEL ADMIN LOCAL -->
+<div id="adminModal" class="admin-modal hidden">
+  <div class="admin-window">
+    <button class="admin-close-btn" id="closeAdminBtn">✖</button>
+    
+    <div id="loginSection">
+      <h3>Admin Login</h3>
+      <input id="username" type="text" placeholder="Nom d'utilisateur">
+      <input id="password" type="password" placeholder="Mot de passe">
+      <button onclick="loginAdmin()">Se connecter</button>
+      <p id="loginMessage" style="color:red"></p>
+    </div>
 
-  if(news) document.getElementById('newsContent').innerHTML = news;
-  if(events) document.getElementById('eventsContent').innerHTML = events;
+    <div id="adminPanel" class="hidden">
+      <button onclick="logout()">Se déconnecter</button>
+      <div class="admin-tabs">
+        <button onclick="showSection('adminNews')">Actualités</button>
+        <button onclick="showSection('adminEvents')">Évènements</button>
+        <button onclick="showSection('adminShop')">Boutique</button>
+      </div>
 
-  // render shop
-  const container = document.getElementById('shopContainer');
-  container.innerHTML = '';
-  shop.forEach((it, idx) => {
-    const div = document.createElement('div');
-    div.className = 'shop-item';
-    div.dataset.idx = idx;
-    div.innerHTML = `
-      <img src="${it.img}" alt="${escapeHtml(it.title)}">
-      <h3>${escapeHtml(it.title)}</h3>
-      <p>${escapeHtml(it.desc)}</p>
-      <strong>${escapeHtml(it.price)} €</strong>
-    `;
-    container.appendChild(div);
-  });
-}
+      <div id="adminNews" class="adminSection">
+        <textarea id="newsEditor" placeholder="Écris les actualités ici..."></textarea>
+        <button onclick="saveNews()">💾 Sauvegarder Actualités</button>
+      </div>
 
-// small helper
-function escapeHtml(str){
-  if(!str) return '';
-  return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
-}
+      <div id="adminEvents" class="adminSection hidden">
+        <textarea id="eventsEditor" placeholder="Écris les évènements ici..."></textarea>
+        <button onclick="saveEvents()">💾 Sauvegarder Évènements</button>
+      </div>
 
-let lastScrollPos = window.scrollY;
-const header = document.querySelector("header");
-let headerHidden = false;
+      <div id="adminShop" class="adminSection hidden">
+        <input type="text" id="shopTitle" placeholder="Nom de l'article">
+        <input type="text" id="shopDesc" placeholder="Description">
+        <input type="number" id="shopPrice" placeholder="Prix">
+        <input type="text" id="shopImg" placeholder="URL image">
+        <button onclick="addShopItem()">➕ Ajouter Article</button>
+        <h4>Articles existants :</h4>
+        <div id="shopPreview"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-window.addEventListener("scroll", () => {
-    const currentPos = window.scrollY;
-
-    // Scroll vers le bas → cacher le header
-    if (currentPos > lastScrollPos && currentPos > 50) {
-        if (!headerHidden) {
-            header.classList.add("header-hidden");
-            headerHidden = true;
-        }
-    }
-
-    // Scroll vers le haut → montrer le header
-    else {
-        if (headerHidden) {
-            header.classList.remove("header-hidden");
-            headerHidden = false;
-        }
-    }
-
-    lastScrollPos = currentPos;
-});
-
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
