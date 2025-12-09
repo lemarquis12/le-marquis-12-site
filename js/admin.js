@@ -1,151 +1,133 @@
-// admin.js - secret combo, login, admin UI, shop add/delete
-document.addEventListener('DOMContentLoaded', () => {
-  const adminModal = document.getElementById('adminModal');
-  const adminCloseBtn = document.getElementById('adminCloseBtn');
-  const adminCloseBtn2 = document.getElementById('adminCloseBtn2');
-  const adminLogin = document.getElementById('adminLogin');
-  const adminUI = document.getElementById('adminUI');
-  const loginBtn = document.getElementById('adminLoginBtn');
-  const adminUser = document.getElementById('adminUser');
-  const adminPass = document.getElementById('adminPass');
-  const loginMsg = document.getElementById('adminLoginMsg');
-  const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+// ==== ADMIN LOCAL PANEL ====
+const adminModal = document.getElementById("adminModal");
+const loginSection = document.getElementById("loginSection");
+const adminPanel = document.getElementById("adminPanel");
+const loginMessage = document.getElementById("loginMessage");
 
-  const ADMIN_USER = 'admin';
-  const ADMIN_PASS = 'lemarquis12';
-
-  // secret combo Ctrl+Alt+M
-  document.addEventListener('keydown', (e) => {
-    if(e.ctrlKey && e.altKey && e.key.toLowerCase() === 'm'){
-      adminModal.classList.remove('hidden');
-      adminLogin.style.display = 'block';
-      adminUI.classList.add('hidden');
-      loginMsg.textContent = '';
-      adminUser.value = '';
-      adminPass.value = '';
+// ==== OPEN ADMIN VIA CTRL + A ====
+document.addEventListener("keydown", e => {
+    if(e.ctrlKey && e.key.toLowerCase() === "a"){
+        adminModal.classList.remove("hidden");
+        loginSection.style.display = "block";
+        adminPanel.classList.add("hidden");
     }
-  });
+});
 
-  // close handlers
-  adminCloseBtn?.addEventListener('click', ()=> adminModal.classList.add('hidden'));
-  adminCloseBtn2?.addEventListener('click', ()=> adminModal.classList.add('hidden'));
-  adminLogoutBtn?.addEventListener('click', ()=> {
-    adminUI.classList.add('hidden');
-    adminLogin.style.display = 'block';
-  });
+// ==== CLOSE ADMIN ====
+document.getElementById("closeAdminBtn").addEventListener("click", () => {
+    adminModal.classList.add("hidden");
+});
 
-  // login
-  loginBtn?.addEventListener('click', ()=> {
-    if(adminUser.value.trim() === ADMIN_USER && adminPass.value.trim() === ADMIN_PASS){
-      adminLogin.style.display = 'none';
-      adminUI.classList.remove('hidden');
-      loadAdminData();
-      hookAdminTabs();
+// ==== LOGIN ====
+function loginAdmin(){
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if(username === "admin" && password === "1234"){
+        loginSection.style.display = "none";
+        adminPanel.classList.remove("hidden");
+        loadData();
     } else {
-      loginMsg.textContent = 'Identifiants incorrects';
+        loginMessage.innerText = "Nom d'utilisateur ou mot de passe incorrect";
     }
-  });
+}
 
-  // save news / events
-  document.getElementById('saveNewsBtn')?.addEventListener('click', ()=> {
-    localStorage.setItem('newsContent', document.getElementById('newsEditor').value);
-    refreshSiteContent();
-    alert('Actualités sauvegardées');
-  });
-  document.getElementById('saveEventsBtn')?.addEventListener('click', ()=> {
-    localStorage.setItem('eventsContent', document.getElementById('eventsEditor').value);
-    refreshSiteContent();
-    alert('Évènements sauvegardés');
-  });
+// ==== LOGOUT ====
+function logout(){
+    loginSection.style.display = "block";
+    adminPanel.classList.add("hidden");
+}
 
-  // add shop item with file -> dataURL
-  document.getElementById('addShopBtn')?.addEventListener('click', ()=> {
-    const title = document.getElementById('shopTitle').value.trim();
-    const desc = document.getElementById('shopDesc').value.trim();
-    const price = document.getElementById('shopPrice').value.trim();
-    const fileInput = document.getElementById('shopImageFile');
+// ==== SHOW ADMIN SECTIONS ====
+function showSection(sectionId){
+    const sections = document.querySelectorAll(".adminSection");
+    sections.forEach(s => s.classList.add("hidden"));
+    document.getElementById(sectionId).classList.remove("hidden");
+}
 
-    if(!title || !desc || !price){
-      return alert('Remplis tous les champs');
-    }
-    if(!fileInput || !fileInput.files || !fileInput.files[0]){
-      return alert('Sélectionne une image');
-    }
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const imgData = e.target.result;
-      const shop = JSON.parse(localStorage.getItem('shopItems') || '[]');
-      shop.push({title, desc, price, img: imgData});
-      localStorage.setItem('shopItems', JSON.stringify(shop));
-      renderShopPreview();
-      refreshSiteContent();
-      // reset
-      document.getElementById('shopTitle').value = '';
-      document.getElementById('shopDesc').value = '';
-      document.getElementById('shopPrice').value = '';
-      fileInput.value = '';
-      alert('Article ajouté');
-    };
-    reader.readAsDataURL(fileInput.files[0]);
-  });
+// ==== LOCAL STORAGE ====
+// News
+function saveNews(){
+    const news = document.getElementById("newsEditor").value;
+    localStorage.setItem("newsContent", news);
+    loadData(); // refresh
+    alert("Actualités sauvegardées !");
+}
+// Events
+function saveEvents(){
+    const events = document.getElementById("eventsEditor").value;
+    localStorage.setItem("eventsContent", events);
+    loadData();
+    alert("Évènements sauvegardés !");
+}
 
-  // render preview list in admin
-  function renderShopPreview(){
-    const preview = document.getElementById('shopPreview');
-    const shop = JSON.parse(localStorage.getItem('shopItems') || '[]');
-    preview.innerHTML = '';
-    shop.forEach((it, idx) => {
-      const div = document.createElement('div');
-      div.className = 'shop-preview-item';
-      div.innerHTML = `
-        <div style="display:flex;gap:8px;align-items:center">
-          <img src="${it.img}" style="width:70px;height:48px;object-fit:cover;border-radius:6px">
-          <div>
-            <strong style="display:block">${escapeHtml(it.title)}</strong>
-            <small style="color:#ddd">${escapeHtml(it.price)} €</small>
-          </div>
-        </div>
-        <div>
-          <button data-idx="${idx}" class="deleteShopBtn" style="background:#333;color:#fff;border:0;padding:6px 8px;border-radius:6px;cursor:pointer">🗑️</button>
-        </div>`;
-      preview.appendChild(div);
+// Shop
+function addShopItem(){
+    const title = document.getElementById("shopTitle").value;
+    const desc = document.getElementById("shopDesc").value;
+    const price = document.getElementById("shopPrice").value;
+    const img = document.getElementById("shopImg").value;
+
+    if(!title || !desc || !price) return alert("Remplis tous les champs !");
+
+    let shopItems = JSON.parse(localStorage.getItem("shopItems")) || [];
+    shopItems.push({title, desc, price, img});
+    localStorage.setItem("shopItems", JSON.stringify(shopItems));
+    document.getElementById("shopTitle").value = "";
+    document.getElementById("shopDesc").value = "";
+    document.getElementById("shopPrice").value = "";
+    document.getElementById("shopImg").value = "";
+    loadShop();
+}
+
+// ==== LOAD DATA ====
+function loadData(){
+    // News
+    const news = localStorage.getItem("newsContent");
+    if(news) document.getElementById("newsContent").innerHTML = news;
+    document.getElementById("newsEditor").value = news || "";
+
+    // Events
+    const events = localStorage.getItem("eventsContent");
+    if(events) document.getElementById("eventsContent").innerHTML = events;
+    document.getElementById("eventsEditor").value = events || "";
+
+    // Shop
+    loadShop();
+}
+
+// ==== LOAD SHOP ====
+function loadShop(){
+    const container = document.getElementById("shopContainer");
+    const preview = document.getElementById("shopPreview");
+    let shopItems = JSON.parse(localStorage.getItem("shopItems")) || [];
+
+    container.innerHTML = "";
+    preview.innerHTML = "";
+
+    shopItems.forEach((item, i) => {
+        // Frontend display
+        const div = document.createElement("div");
+        div.className = "shop-item";
+        div.innerHTML = `
+            ${item.img ? `<img src="${item.img}" alt="${item.title}">` : ""}
+            <h4>${item.title}</h4>
+            <p>${item.desc}</p>
+            <b>${item.price} €</b>
+        `;
+        container.appendChild(div);
+
+        // Admin preview
+        const pre = document.createElement("div");
+        pre.innerHTML = `${item.title} - ${item.price}€ <button onclick="deleteShopItem(${i})">Supprimer</button>`;
+        preview.appendChild(pre);
     });
-    document.querySelectorAll('.deleteShopBtn').forEach(btn => btn.addEventListener('click', ()=> {
-      const idx = parseInt(btn.dataset.idx);
-      deleteShopItem(idx);
-    }));
-  }
+}
 
-  function deleteShopItem(i){
-    const shop = JSON.parse(localStorage.getItem('shopItems') || '[]');
-    if(i>=0 && i<shop.length){
-      shop.splice(i,1);
-      localStorage.setItem('shopItems', JSON.stringify(shop));
-      renderShopPreview();
-      refreshSiteContent();
-      alert('Article supprimé');
-    }
-  }
-
-  // load admin data into editors
-  function loadAdminData(){
-    document.getElementById('newsEditor').value = localStorage.getItem('newsContent') || '';
-    document.getElementById('eventsEditor').value = localStorage.getItem('eventsContent') || '';
-    renderShopPreview();
-  }
-
-  // hook admin tabs
-  function hookAdminTabs(){
-    document.querySelectorAll('.admin-tab').forEach(tab => tab.addEventListener('click', ()=> {
-      document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const target = tab.dataset.section;
-      document.querySelectorAll('.admin-content').forEach(c => c.style.display = 'none');
-      document.getElementById(target).style.display = 'block';
-    }));
-  }
-
-  // escape helper
-  function escapeHtml(s){ if(!s) return ''; return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]); }
-
-}); // end DOMContentLoaded
+// ==== DELETE SHOP ITEM ====
+function deleteShopItem(index){
+    let shopItems = JSON.parse(localStorage.getItem("shopItems")) || [];
+    shopItems.splice(index, 1);
+    localStorage.setItem("shopItems", JSON.stringify(shopItems));
+    loadShop();
+}
