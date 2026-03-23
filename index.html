@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO primaire -->
+  <title>Communauté le_marquis_12 — Stream Twitch & Gaming</title>
+  <meta name="description" content="Rejoins la communauté de le_marquis_12 — streams Twitch, gaming tactique, clips YouTube, TikTok et Discord. Ambiance garantie, skill optionnel.">
+  <meta name="keywords" content="le_marquis_12, twitch, stream, gaming, communauté, discord, youtube">
+  <meta name="author" content="le_marquis_12">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lemarquis12.github.io/">
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://lemarquis12.github.io/">
+  <meta property="og:title"       content="Communauté le_marquis_12">
+  <meta property="og:description" content="Stream Twitch, gaming tactique et bonne ambiance. Rejoins la communauté !">
+  <meta property="og:image"       content="https://lemarquis12.github.io/image/og-preview.png">
+  <meta property="og:locale"      content="fr_FR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Communauté le_marquis_12">
+  <meta name="twitter:description" content="Stream Twitch, gaming tactique et bonne ambiance.">
+  <meta name="twitter:image"       content="https://lemarquis12.github.io/image/og-preview.png">
+
+  <!-- Thème couleur navigateur mobile -->
+  <meta name="theme-color" content="#cc0022">
+
+  <!-- Favicon -->
+  <link rel="icon"             href="image/icon_TacticalBoy.png" type="image/png">
+  <link rel="apple-touch-icon" href="image/icon_TacticalBoy.png">
+
+  <!-- Fonts : preconnect d'abord, display=swap pour éviter FOIT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS critique -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JSON-LD structuré pour Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "le_marquis_12",
+    "url": "https://lemarquis12.github.io/",
+    "sameAs": [
+      "https://twitch.tv/lemarquis12",
+      "https://youtube.com/@le_marquis_12",
+      "https://tiktok.com/@le_marquis_124",
+      "https://instagram.com/le_marquis12"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- BACKGROUND CANVAS -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- ══════════════════════════════════════
+       SKIP LINK (accessibilité)
+  ══════════════════════════════════════ -->
+  <a href="#mainContent" class="skip-link">Aller au contenu</a>
+
+  <!-- ══════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════ -->
+  <header class="top-header" id="mainHeader" role="banner">
+    <a href="#stream" class="logo-link" id="homeBtn" aria-label="Retour au live">
+      <img src="image/icon_TacticalBoy.png" alt="Logo le_marquis_12" class="logo" width="52" height="52">
+    </a>
+
+    <div class="header-title-block" aria-hidden="true">
+      <span class="header-pre">// COMMUNAUTÉ</span>
+      <span class="site-title">DU MARQUIS <span class="title-accent">12</span></span>
+    </div>
+
+    <div class="header-hud" aria-hidden="true">
+      <span class="hud-dot"></span>
+      <span class="hud-text">SYS:ONLINE</span>
+    </div>
+
+    <button class="admin-btn" id="openAdminBtn" aria-haspopup="dialog" aria-label="Ouvrir le panneau administrateur">
+      ADMIN <span aria-hidden="true">🔒</span>
+    </button>
+  </header>
+
+  <!--NAVIGATION -->
+  <nav class="tab" id="mainNav" role="navigation" aria-label="Navigation principale">
+    <button class="tablinks active" data-target="stream" aria-selected="true"  aria-controls="stream"   role="tab"><span class="tab-icon" aria-hidden="true">◈</span> LIVE</button>
+    <button class="tablinks"        data-target="news"   aria-selected="false" aria-controls="news"     role="tab"><span class="tab-icon" aria-hidden="true">◈</span> ACTUALITÉS</button>
+    <button class="tablinks"        data-target="events" aria-selected="false" aria-controls="events"   role="tab"><span class="tab-icon" aria-hidden="true">◈</span> ÉVÈNEMENTS</button>
+    <button class="tablinks"        data-target="boutique" aria-selected="false" aria-controls="boutique" role="tab"><span class="tab-icon" aria-hidden="true">◈</span> BOUTIQUE</button>
+    <button class="tablinks"        data-target="socials" aria-selected="false" aria-controls="socials"  role="tab"><span class="tab-icon" aria-hidden="true">◈</span> RÉSEAUX</button>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       CONTENU PRINCIPAL
+  ══════════════════════════════════════ -->
+  <main id="mainContent" role="main" tabindex="-1">
+
+    <!-- STREAM -->
+    <section id="stream" class="tabcontent active-section" role="tabpanel" aria-labelledby="tab-stream">
+      <div class="section-header">
+        <h2>LIVE TWITCH <span class="accent-red">&amp;</span> CHAT</h2>
+        <div class="live-indicator" aria-label="En direct"><span aria-hidden="true"></span>EN DIRECT</div>
+      </div>
+      <div id="streamChatContainer">
+        <div class="stream-frame-wrap">
+          <iframe
+            src="https://player.twitch.tv/?channel=lemarquis12&parent=lemarquis12.github.io"
+            allowfullscreen
+            loading="lazy"
+            title="Stream Twitch de lemarquis12"
+            sandbox="allow-scripts allow-same-origin allow-popups">
+          </iframe>
+        </div>
+        <div class="chat-frame-wrap">
+          <iframe
+            src="https://www.twitch.tv/embed/lemarquis12/chat?parent=lemarquis12.github.io"
+            loading="lazy"
+            title="Chat Twitch de lemarquis12"
+            sandbox="allow-scripts allow-same-origin allow-popups">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTUALITÉS -->
+    <section id="news" class="tabcontent" role="tabpanel" aria-labelledby="tab-news" hidden>
+      <div class="section-header"><h2>ACTUALITÉS</h2></div>
+      <div id="newsContent" class="content-box">
+        <p class="placeholder-text">// Pas encore d'actualités disponibles.</p>
+      </div>
+    </section>
+
+    <!-- ÉVÈNEMENTS -->
+    <section id="events" class="tabcontent" role="tabpanel" aria-labelledby="tab-events" hidden>
+      <div class="section-header"><h2>ÉVÈNEMENTS</h2></div>
+      <div id="eventsContent" class="content-box">
+        <p class="placeholder-text">// Pas encore d'évènements programmés.</p>
+      </div>
+    </section>
+
+    <!-- BOUTIQUE -->
+    <section id="boutique" class="tabcontent" role="tabpanel" aria-labelledby="tab-boutique" hidden>
+      <div class="section-header"><h2>BOUTIQUE</h2></div>
+      <div id="shopContainer" class="shop-container" aria-live="polite"></div>
+    </section>
+
+    <!-- RÉSEAUX SOCIAUX -->
+    <section id="socials" class="tabcontent" role="tabpanel" aria-labelledby="tab-socials" hidden>
+      <div class="section-header"><h2>RÉSEAUX SOCIAUX</h2></div>
+      <div class="social-cards-container">
+
+        <article class="social-card twitch-card">
+          <div class="card-corner-tl" aria-hidden="true"></div>
+          <div class="card-corner-br" aria-hidden="true"></div>
+          <div class="social-card-icon">
+            <img src="image/twitch.png" alt="" role="presentation" width="30" height="30"
+              onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🎮',className:'icon-fallback'}))">
+          </div>
+          <div class="social-card-body">
+            <h3>Twitch — le_marquis_12</h3>
+            <p>Le seul stream où le skill est en option, mais la bonne ambiance obligatoire. Missions tactiques en catastrophe contrôlée.</p>
+            <a class="social-btn" href="https://twitch.tv/lemarquis12" target="_blank" rel="noopener noreferrer">ACCÉDER AU STREAM</a>
+          </div>
+        </article>
+
+        <article class="social-card youtube-card">
+          <div class="card-corner-tl" aria-hidden="true"></div>
+          <div class="card-corner-br" aria-hidden="true"></div>
+          <div class="social-card-icon">
+            <img src="image/youtube.png" alt="" role="presentation" width="30" height="30"
+              onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'▶️',className:'icon-fallback'}))">
+          </div>
+          <div class="social-card-body">
+            <h3>YouTube — le_marquis_12</h3>
+            <p>Meilleurs moments, pires fails et clips que même le Marquis voudrait oublier. Tout ce qui fait d'un stream une épopée.</p>
+            <a class="social-btn" href="https://youtube.com/@le_marquis_12" target="_blank" rel="noopener noreferrer">ACCÉDER À YOUTUBE</a>
+          </div>
+        </article>
+
+        <article class="social-card tiktok-card">
+          <div class="card-corner-tl" aria-hidden="true"></div>
+          <div class="card-corner-br" aria-hidden="true"></div>
+          <div class="social-card-icon">
+            <img src="image/tiktok.png" alt="" role="presentation" width="30" height="30"
+              onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🎵',className:'icon-fallback'}))">
+          </div>
+          <div class="social-card-body">
+            <h3>TikTok — @le_marquis_124</h3>
+            <p>Clips courts, rapides et dangereux pour ta santé mentale. Explosion de chaos en 10 secondes chrono.</p>
+            <a class="social-btn" href="https://tiktok.com/@le_marquis_124" target="_blank" rel="noopener noreferrer">ACCÉDER À TIKTOK</a>
+          </div>
+        </article>
+
+        <article class="social-card instagram-card">
+          <div class="card-corner-tl" aria-hidden="true"></div>
+          <div class="card-corner-br" aria-hidden="true"></div>
+          <div class="social-card-icon">
+            <img src="image/instagram.png" alt="" role="presentation" width="30" height="30"
+              onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📷',className:'icon-fallback'}))">
+          </div>
+          <div class="social-card-body">
+            <h3>Instagram — @le_marquis12</h3>
+            <p>QG officiel en version stylée. Photos, annonces, coulisses et parfois des posts à 3h du matin.</p>
+            <a class="social-btn" href="https://instagram.com/le_marquis12" target="_blank" rel="noopener noreferrer">ACCÉDER À INSTAGRAM</a>
+          </div>
+        </article>
+
+        <article class="social-card discord-card">
+          <div class="card-corner-tl" aria-hidden="true"></div>
+          <div class="card-corner-br" aria-hidden="true"></div>
+          <div class="social-card-icon">
+            <img src="image/discord.png" alt="" role="presentation" width="30" height="30"
+              onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'💬',className:'icon-fallback'}))">
+          </div>
+          <div class="social-card-body">
+            <h3>Discord — Communauté</h3>
+            <p>Le chat officiel de la communauté. Memes, conseils, rage quit et bonne humeur garantis 24/7.</p>
+            <a class="social-btn" href="https://discord.gg/tonlien" target="_blank" rel="noopener noreferrer">REJOINDRE LE DISCORD</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">
+        <small>© <span id="currentYear"></span> — COMMUNAUTÉ DU MARQUIS 12</small>
+      </p>
+      <nav aria-label="Réseaux sociaux">
+        <ul class="footer-social" role="list">
+          <li><a href="https://twitch.tv/lemarquis12"        target="_blank" rel="noopener noreferrer" class="fsoc-link twitch"    aria-label="Twitch"><img src="image/twitch.png"    alt="Twitch"    width="22" height="22" loading="lazy"></a></li>
+          <li><a href="https://youtube.com/@le_marquis_12"   target="_blank" rel="noopener noreferrer" class="fsoc-link youtube"   aria-label="YouTube"><img src="image/youtube.png"   alt="YouTube"   width="22" height="22" loading="lazy"></a></li>
+          <li><a href="https://tiktok.com/@le_marquis_124"   target="_blank" rel="noopener noreferrer" class="fsoc-link tiktok"    aria-label="TikTok"><img src="image/tiktok.png"    alt="TikTok"    width="22" height="22" loading="lazy"></a></li>
+          <li><a href="https://instagram.com/le_marquis12"   target="_blank" rel="noopener noreferrer" class="fsoc-link instagram" aria-label="Instagram"><img src="image/instagram.png" alt="Instagram" width="22" height="22" loading="lazy"></a></li>
+          <li><a href="https://discord.gg/tonlien"           target="_blank" rel="noopener noreferrer" class="fsoc-link discord"   aria-label="Discord"><img src="image/discord.png"   alt="Discord"   width="22" height="22" loading="lazy"></a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       ADMIN MODAL
+  ══════════════════════════════════════ -->
+  <div id="adminModal" class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle" aria-hidden="true">
+    <div class="admin-window">
+      <button class="admin-close-btn" id="closeAdminBtn" aria-label="Fermer le panneau admin">✖ FERMER</button>
+      <p id="adminModalTitle" class="admin-title">PANNEAU ADMIN</p>
+
+      <div id="loginSection">
+        <div class="login-form">
+          <label class="field-label" for="username">IDENTIFIANT</label>
+          <input id="username" type="text" placeholder="admin" autocomplete="username" spellcheck="false">
+          <label class="field-label" for="password">MOT DE PASSE</label>
+          <input id="password" type="password" placeholder="••••••" autocomplete="current-password">
+          <button id="loginBtn" class="btn-primary">SE CONNECTER</button>
+          <p id="loginMessage" role="alert" aria-live="assertive"></p>
+        </div>
+      </div>
+
+      <div id="adminPanel" hidden>
+        <div class="admin-topbar">
+          <div class="admin-tabs" role="tablist">
+            <button class="admin-tab active" data-section="adminNews"   role="tab" aria-selected="true">ACTUALITÉS</button>
+            <button class="admin-tab"        data-section="adminEvents" role="tab" aria-selected="false">ÉVÈNEMENTS</button>
+            <button class="admin-tab"        data-section="adminShop"   role="tab" aria-selected="false">BOUTIQUE</button>
+          <button class="admin-tab"        data-section="adminLogs"   role="tab" aria-selected="false">LOGS</button>
+          </div>
+          <div class="admin-user-badge">
+            <span class="hud-dot" aria-hidden="true"></span>
+            <span id="adminUserBadge" class="hud-text">—</span>
+          </div>
+          <button id="logoutBtn" class="btn-logout">DÉCONNEXION</button>
+        </div>
+
+        <div id="adminNews" class="adminSection">
+          <label class="field-label" for="newsEditor">CONTENU ACTUALITÉS <span class="label-hint">(HTML accepté)</span></label>
+          <textarea id="newsEditor" placeholder="Écris les actualités ici..." rows="6"></textarea>
+          <button id="saveNewsBtn" class="btn-primary">💾 SAUVEGARDER</button>
+        </div>
+
+        <div id="adminEvents" class="adminSection" hidden>
+          <label class="field-label" for="eventsEditor">CONTENU ÉVÈNEMENTS <span class="label-hint">(HTML accepté)</span></label>
+          <textarea id="eventsEditor" placeholder="Écris les évènements ici..." rows="6"></textarea>
+          <button id="saveEventsBtn" class="btn-primary">💾 SAUVEGARDER</button>
+        </div>
+
+        <div id="adminShop" class="adminSection" hidden>
+          <div class="shop-form-grid">
+            <div>
+              <label class="field-label" for="shopTitle">NOM DE L'ARTICLE</label>
+              <input id="shopTitle" type="text" placeholder="Ex: T-Shirt Marquis" maxlength="80">
+            </div>
+            <div>
+              <label class="field-label" for="shopPrice">PRIX (€)</label>
+              <input id="shopPrice" type="number" placeholder="25" min="0" step="0.01">
+            </div>
+            <div class="full-col">
+              <label class="field-label" for="shopDesc">DESCRIPTION</label>
+              <input id="shopDesc" type="text" placeholder="Description courte" maxlength="140">
+            </div>
+            <div class="full-col">
+              <label class="field-label" for="shopImg">URL IMAGE</label>
+              <input id="shopImg" type="url" placeholder="https://...">
+            </div>
+          </div>
+          <button id="addShopBtn" class="btn-primary">➕ AJOUTER L'ARTICLE</button>
+          <div class="shop-preview-list">
+            <p class="field-label" style="margin-top:20px;">ARTICLES EN LIGNE</p>
+            <div id="shopPreview" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- LOGS — superadmin uniquement -->
+        <div id="adminLogs" class="adminSection" hidden>
+          <div id="logsContent" aria-live="polite">
+            <p class="placeholder-text">// Connexion requise pour voir les logs.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts — en bas pour ne pas bloquer le rendu -->
+  <script src="js/background.js" defer></script>
+  <script src="js/main.js"       defer></script>
+  <script src="js/admin.js"      defer></script>
+</body>
+</html>
